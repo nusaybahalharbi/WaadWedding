@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --wedding-cream: #faf7f2;
+  --wedding-gold: #c9a96e;
+  --wedding-gold-light: #e8d5b0;
+  --wedding-gold-dark: #a88542;
+  --wedding-charcoal: #2d2d2d;
+  --wedding-taupe: #8b7d6b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Lato", "Noto Naskh Arabic", sans-serif;
+  background-color: var(--wedding-cream);
+  color: var(--wedding-charcoal);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Arabic text defaults */
+[dir="rtl"],
+.arabic {
+  font-family: "Amiri", "Noto Naskh Arabic", serif;
+  direction: rtl;
+}
+
+/* Elegant scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--wedding-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--wedding-gold-light);
+  border-radius: 3px;
+}
+
+/* Ornamental divider */
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--wedding-gold);
+  font-size: 14px;
+  letter-spacing: 0.2em;
+}
+.ornament::before,
+.ornament::after {
+  content: "";
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--wedding-gold),
+    transparent
+  );
+}
+
+/* Upload drop zone */
+.drop-zone {
+  border: 2px dashed var(--wedding-gold-light);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+.drop-zone.active {
+  border-color: var(--wedding-gold);
+  background-color: rgba(201, 169, 110, 0.05);
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--wedding-gold-light) 25%,
+    var(--wedding-gold) 50%,
+    var(--wedding-gold-light) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* Progress bar */
+.progress-bar {
+  height: 4px;
+  background: var(--wedding-gold-light);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: var(--wedding-gold);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
